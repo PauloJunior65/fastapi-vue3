@@ -1,0 +1,19 @@
+python -m pip cache purge
+pip freeze | xargs pip uninstall -y
+python -m pip install --upgrade pip
+#Criar o arquivo requirementos com suas dependencias
+pip3 freeze > requirements.txt
+pip3 install -r requirements.txt --upgrade
+
+#Criar ambiente virtual
+python -m venv venv
+virtualenv venv
+
+# Rodar a aplicação
+uvicorn main:app --reload
+
+https://github.com/Anbarryprojects/fastapi-babel
+pybabel extract -F babel.cfg -o messages.pot .
+pybabel init -i messages.pot -d lang -l en
+pybabel init -i messages.pot -d lang -l zh_Hans
+pybabel compile -d lang
